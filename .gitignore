@@ -1,0 +1,6 @@
+# Sensitive files with API keys
+ocr_pipeline.py
+ocr_pipeline_full.py
+
+# Raw data (too large, contains sensitive metadata)
+raw_data/
