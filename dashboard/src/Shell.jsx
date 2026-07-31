@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { Routes, Route, useNavigate, useParams, useLocation } from "react-router-dom";
 import { loadData, getData } from "./lib/data";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
@@ -57,6 +57,7 @@ export default function Shell() {
   const [ready, setReady] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     loadData().then(() => setReady(true));
@@ -96,7 +97,7 @@ export default function Shell() {
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
       <Nav
-        page={window.location.pathname.split("/")[1] || "home"}
+        page={location.pathname.split("/")[1] || "home"}
         onNavigate={handleNavigate}
         onSearch={handleSearch}
         searchQuery={searchQuery}
